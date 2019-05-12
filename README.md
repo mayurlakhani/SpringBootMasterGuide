@@ -1,5 +1,5 @@
 # BPMN-Camunda
-all details of SpringBoot using JPA
+all details of Camunda BPMN
 
 Step 1: Java Project needs JDK 8 and above version. Install java runtime environment in OS. Make sure your path as JAVA HOME is set in environment path.
 
