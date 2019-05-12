@@ -1,0 +1,64 @@
+<h1 class="heading text-center">Timesheet</h1>
+
+<!-- <button id="add" class="btn  btn-just-icon btn-round btn-light" (click)='startTimeSheet()' [routerLink]="'/dashboard/timesheet'"><i class="material-icons">add</i></button> -->
+
+<button id="add" class="btn  btn-just-icon btn-round btn-light" [routerLink]="'/dashboard/timesheet'"><i class="material-icons">add</i></button>
+<!-- client list DataTable -->
+<div class="card">
+  <div class="card-body">
+      <table id="data_table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display table responsive no-wrap">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th align="text-center">Action</th>
+          <th align="text-center">activity</th>
+          <th align="text-center">project_name</th>
+          <th align="text-center">project_number</th>
+          <th align="text-center">track_number</th>
+          <th align="text-center">description</th>
+          <th align="text-center">start_date</th>
+          <th align="text-center">end_date</th>
+          <th align="text-center">start_time</th>
+          <th align="text-center">end_time</th>
+          <th align="text-center">hours</th>
+          <th align="text-center">minutes</th>
+          <th align="text-center">days</th>
+          <th align="text-center">profile</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timesheet of timesheets">
+          <td><i class="fa fa-dot-circle-o" style="font-size:24px"></i></td>
+          <td>
+            <button type="button" [routerLink]="'createorder'" class="btn btn-light rounded-circle btn-just-icon"><i class="material-icons">add</i></button>
+            <button type="button" class="btn  btn-success rounded-circle btn-just-icon"><i class="material-icons">edit</i></button>
+            <button type="button" class="btn  btn-primary rounded-circle btn-just-icon"><i class="material-icons">info</i></button>
+           <!--  <button type="button" (click)='' class="btn  btn-danger rounded-circle btn-just-icon"><i class="material-icons">close</i></button> -->
+          </td>
+        
+         
+          <td>{{ timesheet.activity }}</td>
+          <td>{{ timesheet.project_name }}</td>
+          <td>{{ timesheet.project_number }}</td>
+          <td>{{ timesheet.track_number }}</td>
+          <td>{{ timesheet.description }}</td>
+          <td>{{ timesheet.start_date }}</td>
+          <td>{{ timesheet.end_date }}</td>
+          <td>{{ timesheet.start_time }}</td>
+          <td>{{ timesheet.end_time }}</td>
+          <td>{{ timesheet.hours }}</td>
+          <td>{{ timesheet.minutes }}</td>
+          <td>{{ timesheet.days }}</td>
+          <td>{{this.profile}}</td>
+          
+        </tr>
+      </tbody>
+      </table>
+  </div>
+</div>
+<!-- end DataTable -->
+
+
+
+

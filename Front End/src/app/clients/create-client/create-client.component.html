@@ -1,0 +1,58 @@
+ <div *ngFor="let hero of tasks" class="col-1-4"> 
+    <div>
+      you are filling form with this Id<h4>{{hero.id}}</h4>
+    </div>
+</div> 
+ 
+<!-- Client form -->
+<div [hidden]="submitted" class=".col-md-6 .offset-md-3">
+  <div class="col-lg">
+    <h4>Create New Client</h4>
+     <form (ngSubmit)="onSubmit()">
+    <div class="card">
+      <div class="card-body">
+       <div class="form-group mb-lg-4" *ngFor="let task of tasks">
+            <input class="form-control" ng-value="task.id" id="taskId" name="taskId" type="text" [(ngModel)]="task.id" readonly="true">
+          </div> 
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="client_name"  name="client_name" type="text" placeholder="enter your Client Name" required [(ngModel)]="client.client_name">
+        </div>
+         <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="email" name="email" type="text" placeholder="enter your Email Id" required [(ngModel)]="client.email">
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="str_name" name="str_name" type="text" placeholder="enter Street Name" required [(ngModel)]="client.str_name">
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="str_no" name="str_no" type="text" placeholder="enter Street Number" required [(ngModel)]="client.str_no">
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="city" name="city"  type="text" placeholder="enter your City" required [(ngModel)]="client.city">
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="zip_code" name="zip_code "type="text" placeholder="enter your Zip Code" required [(ngModel)]="client.zip_code">
+        </div>
+         <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="purchase_department" name="purchase_department" type="text" placeholder="enter your Department of Purchasement" required [(ngModel)]="client.purchase_department">
+        </div>
+         <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="supplie_number" name="supplie_number" type="text" placeholder="enter your Supplier Number" required [(ngModel)]="client.supplie_number">
+        </div>
+         <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="invoice" name="invoice "type="text" placeholder="enter your Invoice" required [(ngModel)]="client.invoice">
+        </div>
+        
+      </div>
+       <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+
+
+     </form>
+  </div>
+</div>
+<!-- Client form -->
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newClient()">Add</button>
+</div>
+

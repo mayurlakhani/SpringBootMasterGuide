@@ -1,0 +1,117 @@
+
+<h1 class="heading text-center">Clients</h1>
+<button id="add" [routerLink]="'/dashboard/clients/createclient'" class="btn  btn-just-icon btn-round btn-light"><i class="material-icons">add</i></button>
+
+<button  class="btn  btn-just-icon btn-round btn-light" (click)='getClientTask()'>click</button>
+<!-- <button id="add" data-toggle="modal" data-target="#addClient" data-whatever="@mdo" class="btn  btn-just-icon btn-round btn-light"><i class="material-icons">add</i></button> -->
+
+<!-- client list DataTable -->
+<div class="card">
+  <div class="card-body">
+      <table id="data_table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display table responsive no-wrap">
+        <thead>
+        <tr>
+          <th align="text-center">Action</th>
+          <th align="text-center">Name</th>
+          <th align="text-center">EmailID</th>
+          <th align="text-center">PurchaseDepartment</th>
+          <th align="text-center">SupplyNo</th>
+          <th align="text-center">Invoice</th>
+          <th align="text-center">City</th>
+          <th align="text-center">StrName</th>
+          <th align="text-center">StrNo</th>
+          <th align="text-center">zipCode</th>
+          <th align="text-center">User</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+           <td>
+            <button type="button" class="btn  btn-success rounded-circle btn-just-icon"><i class="material-icons" routerLink="/dashboard/clients/detail/{{client.client_id}}">edit</i></button>
+            <button type="button" (click)='deleteClient(client)' class="btn  btn-danger rounded-circle btn-just-icon"><i class="material-icons">close</i></button>
+          </td>
+           <td>{{ client.client_name }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.purchase_department }}</td>
+          <td>{{ client.supplie_number }}</td>
+          <td>{{ client.invoice }}</td>
+          <td>{{ client.city }}</td>
+          <td>{{ client.str_name }}</td>
+          <td>{{ client.str_no }}</td>
+          <td>{{ client.zip_code }}</td>
+      
+          <td>{{ client.user_id }}</td>
+        
+         
+          
+         
+
+         <!--  <td><a routerLink="/categorylist/{{restaurant.id}}">View</a></td> -->
+        </tr>
+      </tbody>
+      </table>
+  </div>
+</div>
+<!-- end DataTable -->
+
+<!-- Client form -->
+<div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Fill in the New Client Details!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+         <div class="form-group row">
+      		<label class="col-sm-3 col-form-label">Client ID</label>
+      		<div class="col-sm-9">
+       		 <input type="text" class="form-control" placeholder="New Client ID">
+      		</div>
+    	</div>
+    	
+    	<div class="form-group row">
+      		<label class="col-sm-3 col-form-label">Client Name</label>
+      		<div class="col-sm-9">
+        		<input type="text" class="form-control" placeholder="New Client Name">
+     	    </div>
+    	</div>
+        
+           <div class="form-group">
+            <label>Email address</label>
+            <input type="email" class="form-control rounded-border" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+
+		  <div class="form-group">
+            <label>Invoicing address</label>
+            <input type="email" class="form-control rounded-border" aria-describedby="emailHelp" placeholder="Enter invocing email">
+          </div>
+
+
+          <div class="form-group row">
+      		<label class="col-sm-3 col-form-label">Contact Person</label>
+      		<div class="col-sm-9">
+       		 <input type="text" class="form-control" placeholder="Contact Person">
+      		</div>
+    	</div>
+
+    	<div class="form-group row">
+      		<label class="col-sm-3 col-form-label">Supplier Number</label>
+      		<div class="col-sm-9">
+       		 <input type="text" class="form-control" placeholder="Supplier Number">
+      		</div>
+    	</div>
+
+       </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn  w-30 w-sm-80 m-3 btn-round btn-warning" data-dismiss="modal"><i class="material-icons">close</i> Close</button>
+        <button type="button" class="btn  w-30 w-sm-80 m-3 btn-round btn-warning"><i class="material-icons">done</i> Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Client form -->

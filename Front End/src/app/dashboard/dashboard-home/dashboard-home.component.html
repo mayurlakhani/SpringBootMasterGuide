@@ -1,0 +1,58 @@
+<h1 class="heading text-center">Timesheet</h1>
+
+<button  class="btn  btn-just-icon btn-round btn-light" (click)='getTimeSheetTask()'>click</button>
+
+<button id="add" class="btn  btn-just-icon btn-round btn-light"  [routerLink]="'/dashboard/timesheet'"><i class="material-icons">add</i></button>
+
+
+<!-- client list DataTable -->
+<div class="card">
+  <div class="card-body">
+      <table id="data_table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display table responsive no-wrap">
+        <thead>
+        <tr>
+          <th align="text-center">activity</th>
+          <th align="text-center">project_name</th>
+          <th align="text-center">project_number</th>
+          <th align="text-center">track_number</th>
+          <th align="text-center">description</th>
+          <th align="text-center">start_date</th>
+          <th align="text-center">end_date</th>
+          <th align="text-center">start_time</th>
+          <th align="text-center">end_time</th>
+          <th align="text-center">hours</th>
+          <th align="text-center">minutes</th>
+          <th align="text-center">days</th>
+          <th align="text-center">profile</th>
+           <th align="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timesheet of timesheets">
+          <td>{{ timesheet.activity}}</td>
+          <td>{{ timesheet.project_name }}</td>
+          <td>{{ timesheet.project_number }}</td>
+          <td>{{ timesheet.track_number }}</td>
+          <td>{{ timesheet.description }}</td>
+          <td>{{ timesheet.start_date }}</td>
+          <td>{{ timesheet.end_date }}</td>
+          <td>{{ timesheet.start_time }}</td>
+          <td>{{ timesheet.end_time }}</td>
+          <td>{{ timesheet.hours }}</td>
+          <td>{{ timesheet.minutes }}</td>
+          <td>{{ timesheet.days }}</td>
+          <td>{{this.profile}}</td>
+          <td>
+            <button type="button" class="btn  btn-success rounded-circle btn-just-icon"><i class="material-icons" routerLink="/dashboard/detail/{{timesheet.task_id}}">edit</i></button>
+            <button type="button" (click)='deleteClient(client)' class="btn  btn-danger rounded-circle btn-just-icon"><i class="material-icons">close</i></button>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+  </div>
+</div>
+<!-- end DataTable -->
+
+
+
+

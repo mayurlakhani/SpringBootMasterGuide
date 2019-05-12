@@ -1,0 +1,34 @@
+<h1 class="heading text-center">User List</h1>
+<button id="add" [routerLink]="'/admin/createuser'" class="btn  btn-just-icon btn-round btn-light"><i class="material-icons">add</i></button>
+<!-- <button id="add" data-toggle="modal" data-target="#addClient" data-whatever="@mdo" class="btn  btn-just-icon btn-round btn-light"><i class="material-icons">add</i></button> -->
+
+<!-- User List DataTable -->
+<div class="card">
+  <div class="card-body">
+      <table id="data_table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display table responsive no-wrap">
+        <thead>
+        <tr>
+          <th align="text-center">UserName</th>
+          <th align="text-center">FirstName</th>
+          <th align="text-center">LastName</th>
+          <th align="text-center">EmailId</th>
+          <th align="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button type="button" class="btn  btn-success rounded-circle btn-just-icon"><i class="material-icons" routerLink="/admin/userdetail/{{user.id}}">edit</i></button>
+            <button type="button" (click)='deleteUser(user)' class="btn  btn-danger rounded-circle btn-just-icon"><i class="material-icons">close</i></button> 
+          </td>
+        </tr>
+      </tbody>
+      </table>
+  </div>
+</div>
+<!-- end DataTable -->
+

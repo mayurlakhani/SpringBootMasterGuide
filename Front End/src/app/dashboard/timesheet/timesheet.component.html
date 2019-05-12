@@ -1,0 +1,163 @@
+ <div *ngFor="let hero of tasks" class="col-1-4"> 
+    <div>
+      you are filling form with this Id<h4>{{hero.id}}</h4>
+    </div>
+</div> 
+
+<!-- timesheet Form -->
+<div [hidden]="submitted" class=".col-md-6 .offset-md-3">
+  <div class="col-lg">
+    <h4>Create New Timesheet</h4>
+     <form (ngSubmit)="onSubmit()" #timeSheetForm="ngForm">
+    <div class="card">
+      <div class="card-body">  
+         <div class="form-group mb-lg-4" *ngFor="let task of tasks">
+            <input class="form-control" ng-value="task.id" id="taskId" name="taskId" type="text" [(ngModel)]="task.id">
+          </div>  
+      <!--    <div class="form-group mb-lg-4">
+          <input class="form-control " id="startDate" name="startDate" type="date"  required placeholder="Enter your startDate" [(ngModel)]="timesheet.start_date" >{{timesheet.start_date}}
+        </div> -->
+        <div class="form-group mb-lg-4">
+           <input id="datepicker" data-format="MM/dd/yyyy" type="text" required [(ngModel)]="timesheet.start_date">
+         </div>
+         <div class="form-group mb-lg-4">
+          <input class="form-control " id="startTime" name="startTime" type="time"  required placeholder="Enter your startTime" [(ngModel)]="timesheet.start_time" step="1"> 
+        </div>
+          <div class="form-group mb-lg-4">
+           <input id="datepicker1" data-format="MM/dd/yyyy" type="text" required [(ngModel)]="timesheet.end_date">
+         </div>
+        <!--  <div class="form-group mb-lg-4">
+          <input class="form-control " id="endDate" name="endDate" type="date"  required placeholder="Enter your endDate" [(ngModel)]="timesheet.end_date">
+        </div> -->
+         <div class="form-group mb-lg-4">
+          <input class="form-control " id="endTime" name="endTime" type="time"  required placeholder="Enter your endTime" [(ngModel)]="timesheet.end_time" step="1">
+        </div>
+         <div class="form-group mb-lg-4">
+           <input id="datepicker" data-format="MM/dd/yyyy" type="text" required >
+         </div>
+          
+        <div>
+            <h2>Time difference:</h2>
+            <dl id="diff">
+            </dl>
+             
+             
+        </div>
+          <div class="form-group mb-lg-4">
+          <input class="form-control" type="text" id="duration" name="duration" [(ngModel)]="timesheet.duration" #duration="ngModel">
+          </div>  
+         <div class="form-group mb-lg-4">
+          <input class="form-control" type="text" id="minutes" name="minutes" [(ngModel)]="timesheet.minutes" #minutes="ngModel">
+         </div>
+         <div class="form-group mb-lg-4">
+           <input class="form-control" type="text" id="hours"  name="hours" [(ngModel)]="timesheet.hours" #hours="ngModel">
+         </div>
+          <div class="form-group mb-lg-4">
+            <input class="form-control" type="text" id="days"  name="days" [(ngModel)]="timesheet.days" #days="ngModel"> 
+          </div>
+          <div class="form-group mb-lg-4">
+            <select placeholder="select your activity" class="custom-select p-1" name="activity_name" #activity_name="ngModel" id="activity" [(ngModel)]="timesheet.activity_name" [ngModelOptions]="{standalone: true}">
+                <option selected value="select your activity">select your Activity</option>
+                <option *ngFor="let act of activity" [value]="act.name">{{act.name}}</option>
+            </select>{{timesheet.activity_name}}
+           </div> 
+            <div class="form-group mb-lg-4">
+            <select placeholder="select your Project" class="custom-select p-1" name="project" id="project" [(ngModel)]="timesheet.project" #project="ngModel" [ngModelOptions]="{standalone: true}">
+                <option selected value="select your Project">select your Project</option>
+                <option *ngFor="let act of data" [value]="act.project_name">{{act.project_name}}</option>
+            </select>{{timesheet.project}}
+           </div>
+              <div class="form-group mb-lg-4">
+                <input class="form-control no-border" id="track_number" name="track_number" type="text" required placeholder="Enter your  Track Number" [(ngModel)]="timesheet.track_number" #track_number="ngModel">
+             <div [hidden]="track_number.valid || track_number.pristine"
+              class="alert alert-danger">
+              Track Number is required
+            </div>
+        </div>
+          <div class="form-group mb-lg-4">
+                <input class="form-control no-border" id="detail" name="detail" type="text" required placeholder="Enter your Description" [(ngModel)]="timesheet.detail" #detail="ngModel">
+             <div [hidden]="detail.valid || detail.pristine"
+              class="alert alert-danger">
+              Description is required
+            </div>
+        </div>
+
+         <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="current_location" name="current_location" type="text"  required placeholder="Enter your Location" [(ngModel)]="timesheet.current_location" #current_location="ngModel">
+          <div [hidden]="current_location.valid || current_location.pristine"
+            class="alert alert-danger">
+           Current Location is required
+          </div>
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="comment" name="comment" type="text"  required placeholder="Enter your Comment" [(ngModel)]="timesheet.comment" #comment="ngModel">
+          <div [hidden]="comment.valid || comment.pristine"
+            class="alert alert-danger">
+            Comment is required
+          </div>
+        </div>
+         <div class="form-group mb-lg-4">
+          <select placeholder="select your comment type" class="custom-select p-1" id="comment_type" [(ngModel)]="timesheet.comment_type" [ngModelOptions]="{standalone: true}">
+            <option selected value="Comment">Comment</option>
+            <option value="Notice">Notice</option>
+            <option value="Caution!">Caution!</option>
+          </select>{{timesheet.comment_type}}
+           </div>    
+
+      </div>
+       <button type="submit" class="btn btn-success" [disabled]="!timeSheetForm.form.valid">Submit</button>
+         <button type="reset" value="Reset" class="btn btn-primary">Reset</button>
+
+    </div>
+     </form>
+  </div>
+</div>
+<!-- end timesheet Form -->
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+      <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">startDate</div>
+      <div class="col-xs-9">{{timesheet.start_date }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">endDate</div>
+      <div class="col-xs-9">{{ timesheet.end_date }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">startTime</div>
+      <div class="col-xs-9">{{ timesheet.start_time }}</div>
+    </div>
+     <div class="row">
+      <div class="col-xs-3">endTime</div>
+      <div class="col-xs-9">{{timesheet.end_time }}</div>
+    </div>
+     <div class="row">
+      <div class="col-xs-3">activity</div>
+      <div class="col-xs-9">{{timesheet.activity_name}}</div>
+    </div>
+      <div class="row">
+      <div class="col-xs-3">projectName</div>
+      <div class="col-xs-9">{{timesheet.project}}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">description</div>
+      <div class="col-xs-9">{{timesheet.detail}}</div>
+    </div>
+   <div class="row">
+      <div class="col-xs-3">hours</div>
+      <div class="col-xs-9">{{timesheet.hours}}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">minut</div>
+      <div class="col-xs-9">{{timesheet.minutes}}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">interval</div>
+      <div class="col-xs-9">{{timesheet.detail}}</div>
+    </div>
+    <br>
+  <!-- <button class="btn btn-success" (click)="newTimeSheet()">Add</button> -->
+   <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+
+ </div>

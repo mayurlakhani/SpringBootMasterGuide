@@ -1,0 +1,44 @@
+
+<h2 class="heading text-center">Orders/Engagement</h2>
+<button id="add" [routerLink]="'/dashboard/orders/createorder'" class="btn  btn-just-icon btn-round btn-light"><i class="material-icons">add</i></button>
+
+<!-- Order List DataTable -->
+<div class="card">
+  <div class="card-body">
+      <table id="data_table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display table responsive no-wrap">
+        <thead>
+        <tr>
+          <th align="text-center">Action</th>
+          <th align="text-center">Name</th>
+          <th align="text-center">ProjectType</th>
+          <th align="text-center">PurchaseOrder</th>
+          <th align="text-center">ProjectNo</th>
+          <th align="text-center">Budget</th>
+          <th align="text-center">Rate</th>
+          <th align="text-center">StartDate</th>
+          <th align="text-center">EndDate</th>
+          <th align="text-center">Client</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>
+            <button type="button" class="btn  btn-success rounded-circle btn-just-icon"><i class="material-icons" routerLink="/dashboard/clients/detail/{{order.client_id}}">edit</i></button>
+            <button type="button" (click)='deleteClient(client)' class="btn  btn-danger rounded-circle btn-just-icon"><i class="material-icons">close</i></button>
+          </td>
+          <td>{{ order.name }}</td>
+          <td>{{ order.project_type }}</td>
+          <td>{{ order.purchase_order }}</td>
+          <td>{{ order.project_number  }}</td>
+          <td>{{ order.budget}}</td>
+          <td>{{ order.rate}}</td>
+          <td>{{ order.start_date}}</td>
+          <td>{{ order.end_date}}</td>
+          <td>{{ order.client_id}}</td>
+        </tr>
+      </tbody>
+      </table>
+  </div>
+</div>
+<!-- end DataTable -->
+

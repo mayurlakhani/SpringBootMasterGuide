@@ -1,0 +1,85 @@
+ <div class="auth">
+  <div class="header">
+    <button class=" btn  btn-just-icon btn-round" type="submit" [routerLink]="'/dashboard'">
+      <i class="material-icons">home</i>
+    </button>
+  </div>
+  <div class="w-80 ">
+    <div class="auth-text" [ngClass]="toggleFormClass">
+       <div class="auth-login-text">
+        <h2></h2>
+        <p></p>
+      </div>
+      <div class="auth-signup-text">
+        <h2>Have an account?</h2>
+        <p>Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
+        <button class="btn btn-outline-light  px-5" (click)="showLogin()">Login</button>
+      </div>
+    </div>
+    <!-- forms -->
+    <div class="card shadow auth-forms" [ngClass]="toggleFormClass">
+      <!-- login form -->
+      <div class="auth-login">
+        <div class="wrapper">
+          <h2 class="mb-4 text-primary">Login</h2>
+          <form role="form"  name="form-signin" (ngSubmit)="login(user.username,user.password)" #f="ngForm" novalidate>
+             <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" name="username" pattern="[^ @]*@[^ @]*" [(ngModel)]="user.username" #username="ngModel" required /> 
+                 <!-- <div >an valid email is required</div> -->
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required />
+              <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            </div>
+         <div id="remember" class="checkbox"></div>
+            <div class="form-group">
+              <button type="submit" class="btn px-4 btn-primary">Log In</button>
+            </div>
+          </form>
+        </div>
+      </div> 
+
+    </div>
+  </div>
+</div>
+
+<!--  -->
+
+<!-- Client form -->
+<!-- <div [hidden]="submitted" class=".col-md-6 .offset-md-3">
+  <div class="col-lg">
+    <h4>Create New Client</h4>
+     <form (ngSubmit)="onSubmit()">
+    <div class="card">
+      <div class="card-body">
+        
+      <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="id1"  name="id" type="text" placeholder="enter your id" required [(ngModel)]="user.id">
+        </div> 
+         <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="firstName" name="firstName" type="text" placeholder="enter your firstName " required [(ngModel)]="user.firstName">
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="lastName" name="lastName" type="text" placeholder="enter street lastName" required [(ngModel)]="user.lastName">
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="email" name="email" type="text" placeholder="enter street email" required [(ngModel)]="user.email">
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="password" name="password"  type="text" placeholder="enter your password" required [(ngModel)]="user.password">
+        </div>
+      </div>
+       <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+     </form>
+  </div>
+</div>
+<!-- Client form -->
+<!-- <div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newUser()">Add</button>
+</div>  -->
+

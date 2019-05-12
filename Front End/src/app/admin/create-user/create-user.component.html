@@ -1,0 +1,38 @@
+<!-- user form -->
+<div [hidden]="submitted" class=".col-md-6 .offset-md-3">
+  <div class="col-lg">
+    <h4>Create New User</h4>
+     <form (ngSubmit)="onSubmit()">
+    <div class="card">
+      <div class="card-body">
+    <!--  <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="taskid"  name="id" type="text" [(ngModel)]="client.id">
+        </div>  -->
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="id"  name="id" type="text" placeholder="enter your username" required [(ngModel)]="profile.id">
+        </div> 
+         <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="firstName" name="firstName" type="text" placeholder="enter your First Name" required [(ngModel)]="profile.firstName">
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="lastName" name="lastName" type="text" placeholder="enter Last Name" required [(ngModel)]="profile.lastName">
+        </div>
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="email" name="email" type="email" placeholder="enter your Email" required [(ngModel)]="profile.email">
+        </div>
+         <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="password" name="password" type="password"   [(ngModel)]="credentials.password" required placeholder="enter your password">
+        </div>
+      </div>
+       <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+     </form>
+  </div>
+</div>
+<!-- user form -->
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newUser()">Add</button>
+</div>
+

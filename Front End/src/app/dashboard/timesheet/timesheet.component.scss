@@ -1,0 +1,31 @@
+label {
+  display: inline-block;
+  width: 36px;
+  margin: 8px;
+  text-align: right;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-gap: 8px;
+}
+
+dt {
+  grid-column-start: 1;
+}
+
+dd {
+  grid-column-start: 2;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+.container {
+    padding: 20px;
+}

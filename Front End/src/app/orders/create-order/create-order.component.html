@@ -1,0 +1,62 @@
+ <div *ngFor="let hero of tasks" class="col-1-4"> 
+    <div>
+      you are filling form with this Id<h4>{{hero.id}}</h4>
+    </div>
+</div> 
+ 
+
+<!-- Order Form -->
+<div [hidden]="submitted" class=".col-md-6 .offset-md-3">
+  <div class="col-lg">
+    <h4>Create New Order</h4>
+     <form (ngSubmit)="onSubmit()" #orderForm="ngForm">
+    <div class="card">
+      <div class="card-body">  
+      <!--    <div class="form-group mb-lg-4" *ngFor="let task of tasks">
+            <input class="form-control" ng-value="task.id" id="taskId" name="taskId" type="text" [(ngModel)]="task.id">
+          </div>  -->
+          <div class="form-group mb-lg-4">
+            <select placeholder="select your Client Name" class="custom-select p-1" name="activity_name" id="client_name" [(ngModel)]="order.client_name">
+            <option *ngFor="let act of clientName" [value]="act.client_name">{{act.client_name}}</option>
+            </select>
+          </div> 
+         <div class="form-group mb-lg-4">
+          <input class="form-control " id="start_date" name="start_date" type="date"  required placeholder="Enter your start Date" [(ngModel)]="order.start_date" >
+        </div>
+         <div class="form-group mb-lg-4">
+          <input class="form-control " id="end_date" name="end_date" type="date"  required placeholder="Enter your end Date" [(ngModel)]="order.end_date">
+        </div>  
+  
+        <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="project_number" name="project_number" type="text" required placeholder="Enter your Project Number" [(ngModel)]="order.project_number" #project_number="ngModel">
+             <div [hidden]="project_number.valid || project_number.pristine"
+              class="alert alert-danger">
+              Project Number is required
+            </div>
+        </div>
+          <div class="form-group mb-lg-4">
+                <input class="form-control no-border" id="project_type" name="project_type" type="text" required placeholder="Enter your Project Type" [(ngModel)]="order.project_type" #project_type="ngModel">
+             <div [hidden]="project_type.valid || project_type.pristine"
+              class="alert alert-danger">
+              Project Type is required
+            </div>
+        </div>
+
+         <div class="form-group mb-lg-4">
+          <input class="form-control no-border" id="purchase_order" name="purchase_order" type="text"  required placeholder="Enter your Purchase Order" [(ngModel)]="order.purchase_order" #purchase_order="ngModel">
+          <div [hidden]="purchase_order.valid || purchase_order.pristine"
+            class="alert alert-danger">
+           Purchase Order is required
+          </div>
+        </div>
+      </div>
+       <button type="submit" class="btn btn-success" [disabled]="!orderForm.form.valid">Submit</button>
+         <button type="reset" value="Reset" class="btn btn-primary">Reset</button>
+
+    </div>
+     </form>
+  </div>
+</div>
+ <!-- Order form -->
+
+     
